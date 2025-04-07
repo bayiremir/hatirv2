@@ -1,118 +1,75 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
+import React, {useEffect, useState} from 'react';
+import {Provider} from 'react-redux';
+import store from './src/redux/store';
+import {I18nextProvider} from 'react-i18next';
+import i18n from './src/i18n';
+import {CustomModalProvider} from './src/components/other_components/Modal/CustomModal/CustomModalProvider';
+import Lottie from './src/components/other_components/Lottie';
+import Router from './src/navigation/Router';
+import WelcomeStack from './src/navigation/stack/WelcomeStack';
+import {storage} from './src/utils/MMKV';
+import NewNotification from './src/components/other_components/other/NewNotification';
+import Toast, {ErrorToast} from 'react-native-toast-message';
 
-import React from 'react';
-import type {PropsWithChildren} from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
+export const toastConfig = {
+  error: (props: any) => <ErrorToast {...props} text2NumberOfLines={3} />,
+  notification: ({
+    props,
+  }: {
+    props: {
+      notificationTitle: string;
+      notificationBody: string;
+      onPress: () => void;
+    };
+  }) => <NewNotification props={props} />,
+};
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+const App = () => {
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [isFirstLaunch, setIsFirstLaunch] = useState<boolean>(false);
+  useEffect(() => {
+    const checkAppState = async () => {
+      const savedLanguage = storage.getString('appLanguage');
+      const firstLaunchFlag = storage.getBoolean('isFirstLaunch');
 
-type SectionProps = PropsWithChildren<{
-  title: string;
-}>;
+      if (
+        firstLaunchFlag === null ||
+        firstLaunchFlag === true ||
+        firstLaunchFlag === undefined
+      ) {
+        setIsFirstLaunch(true);
+        storage.set('isFirstLaunch', false);
+      } else {
+        // Eğer dil ayarı kaydedilmişse onu uygula
+        if (savedLanguage && savedLanguage !== i18n.language) {
+          await i18n.changeLanguage(savedLanguage);
+        }
+      }
 
-function Section({children, title}: SectionProps): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
-  return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
-    </View>
-  );
-}
+      setIsLoading(false);
+    };
 
-function App(): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
+    checkAppState();
+  }, []);
 
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
+  if (isLoading) {
+    return <Lottie />;
+  }
 
   return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
-      />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
-        </View>
-      </ScrollView>
-    </SafeAreaView>
+    <Provider store={store}>
+      <I18nextProvider i18n={i18n}>
+        <CustomModalProvider>
+          {isFirstLaunch ? (
+            <WelcomeStack setIsFirstLaunch={setIsFirstLaunch} />
+          ) : (
+            <Router />
+          )}
+          <Toast config={toastConfig} />
+        </CustomModalProvider>
+      </I18nextProvider>
+    </Provider>
   );
-}
-
-const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-});
+};
 
 export default App;
