@@ -10,6 +10,8 @@ import WelcomeStack from './src/navigation/stack/WelcomeStack';
 import {storage} from './src/utils/MMKV';
 import NewNotification from './src/components/other_components/other/NewNotification';
 import Toast, {ErrorToast} from 'react-native-toast-message';
+import {getAuth} from '@react-native-firebase/auth';
+import {connectSocket} from './src/services/socket';
 
 export const toastConfig = {
   error: (props: any) => <ErrorToast {...props} text2NumberOfLines={3} />,
@@ -27,6 +29,17 @@ export const toastConfig = {
 const App = () => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [isFirstLaunch, setIsFirstLaunch] = useState<boolean>(false);
+
+  useEffect(() => {
+    const init = async () => {
+      const user = getAuth().currentUser;
+      if (user) {
+        connectSocket(user.uid); // Firebase UID veya Mongo user._id kullanılabilir
+      }
+    };
+
+    init();
+  }, []);
   useEffect(() => {
     const checkAppState = async () => {
       const savedLanguage = storage.getString('appLanguage');

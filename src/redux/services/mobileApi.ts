@@ -32,11 +32,9 @@ export const mobileApi = createApi({
   reducerPath: 'api',
   baseQuery: baseQueryWithAuthCheck,
   endpoints: builder => ({
+    // 🔐 Auth
     getProfile: builder.query<userSliceType, void>({
       query: () => 'auth/profile',
-    }),
-    getResturant: builder.query<Resturant, void>({
-      query: () => 'resturant',
     }),
     registerUser: builder.mutation<
       userSliceType,
@@ -48,6 +46,93 @@ export const mobileApi = createApi({
         body,
       }),
     }),
+
+    // 🍽️ Restaurant
+    getResturant: builder.query<Resturant, void>({
+      query: () => 'resturant',
+    }),
+
+    // 👥 User List & Search
+    getAllUsers: builder.query<userSliceType[], void>({
+      query: () => 'users',
+    }),
+    searchUsers: builder.query<userSliceType[], string>({
+      query: keyword => `users/search?q=${keyword}`,
+    }),
+
+    // 🤝 Friends
+    getFriends: builder.query<userSliceType[], string>({
+      query: userId => `users/${userId}/friends`,
+    }),
+    getFriendRequests: builder.query<userSliceType[], string>({
+      query: userId => `users/${userId}/friend-requests`,
+    }),
+    sendFriendRequest: builder.mutation<
+      void,
+      {fromUserId: string; toUserId: string}
+    >({
+      query: body => ({
+        url: 'users/send-friend-request',
+        method: 'POST',
+        body,
+      }),
+    }),
+    acceptFriendRequest: builder.mutation<
+      void,
+      {userId: string; requesterId: string}
+    >({
+      query: body => ({
+        url: 'users/accept-friend-request',
+        method: 'POST',
+        body,
+      }),
+    }),
+    rejectFriendRequest: builder.mutation<
+      void,
+      {userId: string; requesterId: string}
+    >({
+      query: body => ({
+        url: 'users/reject-friend-request',
+        method: 'POST',
+        body,
+      }),
+    }),
+    removeFriend: builder.mutation<void, {userId: string; friendId: string}>({
+      query: body => ({
+        url: 'users/remove-friend',
+        method: 'POST',
+        body,
+      }),
+    }),
+
+    // 🚫 Block
+    blockUser: builder.mutation<void, {userId: string; blockId: string}>({
+      query: body => ({
+        url: 'users/block',
+        method: 'POST',
+        body,
+      }),
+    }),
+
+    // 🎁 Gifts
+    sendGift: builder.mutation<
+      any,
+      {
+        productName: string;
+        amount: number;
+        senderId: string;
+        receiverId: string;
+      }
+    >({
+      query: body => ({
+        url: 'gifts/send',
+        method: 'POST',
+        body,
+      }),
+    }),
+    getGiftsByUser: builder.query<any[], string>({
+      query: userId => `gifts/user/${userId}`,
+    }),
   }),
 });
 
@@ -55,4 +140,15 @@ export const {
   useGetProfileQuery,
   useRegisterUserMutation,
   useGetResturantQuery,
+  useGetAllUsersQuery,
+  useSearchUsersQuery,
+  useGetFriendsQuery,
+  useGetFriendRequestsQuery,
+  useSendFriendRequestMutation,
+  useAcceptFriendRequestMutation,
+  useRejectFriendRequestMutation,
+  useRemoveFriendMutation,
+  useBlockUserMutation,
+  useSendGiftMutation,
+  useGetGiftsByUserQuery,
 } = mobileApi;

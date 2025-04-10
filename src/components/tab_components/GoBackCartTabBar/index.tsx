@@ -1,42 +1,42 @@
-import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import React from 'react';
 import {ChevronLeftIcon as ChevronLeftIconOutline} from 'react-native-heroicons/outline';
 import {useNavigation} from '@react-navigation/native';
 import {Fonts} from '../../../interfaces/fonts.enum';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import {RootNavigationType} from '../../../interfaces/navigation.interface';
+import {GiftIcon as GiftIconSolid} from 'react-native-heroicons/solid';
 
-const GoBackTabBar = ({color, center}: {color: string; center: boolean}) => {
+const GoBackCartTabBar = ({color, header}: {color: string; header: string}) => {
   const insets = useSafeAreaInsets();
   const statusBarHeight = insets.top;
   const navigation = useNavigation<RootNavigationType>();
   return (
-    <View style={[styles.container, {paddingTop: statusBarHeight - 20}]}>
+    <View style={[styles.container, {paddingTop: statusBarHeight}]}>
       <TouchableOpacity
         style={styles.iconContainer}
         onPress={() => {
           navigation.goBack();
         }}>
-        <ChevronLeftIconOutline
-          color={color}
-          size={24}
-          style={styles.backicon}
-        />
+        <ChevronLeftIconOutline color={color} size={24} />
         <Text style={[styles.backtext, {color: color}]}>Geri</Text>
       </TouchableOpacity>
-      <Image
-        source={require('../../../../assets/appicon/greenwithbackgroundlogo.png')}
-        style={[styles.logo, {margin: center ? 'auto' : 0}]}
-      />
+      <Text style={[styles.header, {color: color}]}>{header}</Text>
+      <TouchableOpacity
+        onPress={() => {
+          navigation.navigate('BasketScreen', {});
+        }}>
+        <GiftIconSolid color={color} size={24} />
+      </TouchableOpacity>
     </View>
   );
 };
 
-export default GoBackTabBar;
+export default GoBackCartTabBar;
 
 const styles = StyleSheet.create({
   container: {
-    paddingHorizontal: 20,
+    paddingHorizontal: 24,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
@@ -45,20 +45,19 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
   },
-  backicon: {
-    position: 'absolute',
-    zIndex: 1,
-  },
   backtext: {
     position: 'absolute',
-    color: 'white',
-    fontSize: 16,
-    fontFamily: Fonts.Regular,
     left: 25,
-    zIndex: 1,
+    fontFamily: Fonts.Regular,
+    fontSize: 16,
   },
   logo: {
     width: 120,
     height: 100,
+  },
+  header: {
+    fontFamily: Fonts.Bold,
+    fontSize: 12,
+    color: 'white',
   },
 });

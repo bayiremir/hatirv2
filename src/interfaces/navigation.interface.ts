@@ -16,6 +16,7 @@ export type RootStackParamList = {
     code: string;
     name: string;
   };
+  BasketScreen: {};
 };
 
 export type RootNavigationType = NativeStackNavigationProp<RootStackParamList>;

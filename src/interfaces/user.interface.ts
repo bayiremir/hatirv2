@@ -50,4 +50,5 @@ export interface userSliceInitialStateType {
   theme: string;
   onboarding: boolean;
   notificationEnabled: boolean;
+  cart: any[];
 }

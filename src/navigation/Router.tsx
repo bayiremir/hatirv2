@@ -5,6 +5,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 import LoginScreen from '../screens/auth/LoginScreen';
 import RegisterScreen from '../screens/auth/RegisterScreen';
 import ProductDetailScreen from '../screens/product/ProductDetailScreen';
+import BasketScreen from '../screens/tab/BasketScreen';
 
 const RootStack = createStackNavigator();
 
@@ -22,6 +23,7 @@ const Router = () => {
           name="ProductDetailScreen"
           component={ProductDetailScreen}
         />
+        <RootStack.Screen name="BasketScreen" component={BasketScreen} />
       </RootStack.Navigator>
     </NavigationContainer>
   );

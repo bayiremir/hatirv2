@@ -109,7 +109,7 @@ const RegisterScreen = () => {
           <View style={styles.rowcontainer}>
             <LockClosedIconOutline color="white" size={24} />
             <TextInput
-              style={[styles.input, {flex: 1}]}
+              style={styles.input}
               placeholder="Şifre"
               placeholderTextColor={'white'}
               secureTextEntry={true}

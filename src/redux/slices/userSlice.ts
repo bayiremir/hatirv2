@@ -10,6 +10,9 @@ const initialState: userSliceInitialStateType = {
   onboarding: storage.getString('onboarding') === 'true' || false,
   notificationEnabled:
     storage.getString('notificationEnabled') === 'true' || false,
+  cart: storage.getString('cart')
+    ? JSON.parse(storage.getString('cart') || '[]')
+    : [],
 };
 
 const userSlice = createSlice({
@@ -47,6 +50,10 @@ const userSlice = createSlice({
       storage.delete('onboarding');
       storage.delete('notificationEnabled');
     },
+    setCart: (state, action) => {
+      state.cart = action.payload;
+      storage.set('cart', JSON.stringify(action.payload));
+    },
   },
 });
 
@@ -58,5 +65,6 @@ export const {
   setOnboardingComplete,
   setNotificationEnabled,
   setLogout,
+  setCart,
 } = userSlice.actions;
 export default userSlice.reducer;
