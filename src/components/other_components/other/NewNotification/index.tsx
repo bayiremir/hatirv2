@@ -7,8 +7,7 @@ const NewNotification = ({props}: {props: any}) => {
   return (
     <Pressable
       onPress={() => {
-        console.log('NewNotification onPress tetiklendi');
-        props.onPress(); // Tetikleyici
+        props.onPress();
       }}
       style={styles.container}>
       <View style={{flex: 1}}>
@@ -32,7 +31,7 @@ const styles = StyleSheet.create({
     width: '90%',
     borderRadius: 15,
     padding: 10,
-    backgroundColor: COLORS.tealDark,
+    backgroundColor: COLORS.dark,
   },
   notificationTitle: {
     color: 'white',

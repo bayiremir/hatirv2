@@ -1,6 +1,7 @@
 export const COLORS = {
   black: '#000000',
   white: '#ffffff',
+  background: '#f0f0f0',
   successBg: '#006638',
   successButtonBg: '#0AA06E',
   errorBg: '#630500',

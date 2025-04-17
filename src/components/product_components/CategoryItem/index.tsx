@@ -11,11 +11,6 @@ const CategoryItem = ({
   category: MenuCategory;
   onAdd: (item: Product) => void;
 }) => {
-  // const dispatch = useDispatch<any>();
-  // const isLoggedIn = useSelector(
-  //   (state: {userSlice: userSliceInitialStateType}) =>
-  //     state.userSlice.authLogin,
-  // );
   return (
     <View>
       <Text style={styles.categoryTitle}>{category.name}</Text>

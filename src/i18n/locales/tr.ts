@@ -1,4 +1,5 @@
 const tr = {
+  cancel: 'İptal',
   welcome: 'Hoşgeldin!',
   success: 'Başarılı',
   warning: 'Uyarı',
@@ -27,6 +28,27 @@ const tr = {
   favorite: 'Favorilerim',
   profile: 'Hesabım',
   basket: 'Sepetim',
+  headerbasket: 'Sepeti görmek için lütfen giriş yap.',
+  descriptionbasket:
+    'Sepetini görmek için ve ürünleri ekleyebilmek için lütfen giriş yapınız.',
+  headerfavorite: 'Favorileri görmek için lütfen giriş yap.',
+  descriptionfavorite:
+    'Favorilerini görmek için ve ürünleri ekleyebilmek için lütfen giriş yapınız.',
+  headerprofile: 'Profili görmek için lütfen giriş yap.',
+  descriptionprofile:
+    'Profilini görmek için ve ürünleri ekleyebilmek için lütfen giriş yapınız.',
+  login_required_for_basket:
+    'Sepetinize ekleyebilmek için önce lütfen giriş yapınız.',
+  address: 'Adreslerim',
+  favorites: 'Favori Restoranlarım',
+  pastorders: 'Geçmiş Siparişlerim',
+  paymentmethods: 'Ödeme Yöntemlerim',
+  billinfo: 'Fatura Bilgilerim',
+  communicationpreferences: 'İletişim Tercihlerim',
+  accountsettings: 'Hesap Ayarlarım',
+  help: 'Yardım',
+  logout: 'Çıkış Yap',
+  language: 'Dil & Language',
 };
 
 export default tr;

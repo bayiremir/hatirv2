@@ -51,4 +51,6 @@ export interface userSliceInitialStateType {
   onboarding: boolean;
   notificationEnabled: boolean;
   cart: any[];
+  favoriteRestaurants: any[];
+  language: string;
 }

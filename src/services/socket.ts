@@ -8,13 +8,11 @@ export const connectSocket = (userId: string) => {
   });
 
   socket.on('connect', () => {
-    console.log('Socket connected:', socket.id);
     socket.emit('register', userId); // Sunucuya kullanıcıyı bildir
   });
 
   socket.on('notification', payload => {
-    console.log('📩 Bildirim alındı:', payload);
-    // buradan Redux'a dispatch edebilir ya da UI'da snackbar gösterebilirsin
+    console.log('Yeni bildirim:', payload);
   });
 };
 

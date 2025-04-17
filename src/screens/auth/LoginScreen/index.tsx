@@ -88,29 +88,29 @@ const LoginScreen = () => {
 
   return (
     <KeyboardAvoidingView style={styles.container}>
-      <GoBackTabBar color="white" center={true} />
+      <GoBackTabBar color="black" center={true} />
       <ScrollView
         style={styles.secondcontainer}
         contentContainerStyle={styles.scrollContainer}>
         <View style={styles.inputContainer}>
           <Text style={styles.text}>{t('login')}</Text>
           <View style={styles.rowcontainer}>
-            <AtSymbolIconOutline color="white" size={24} />
+            <AtSymbolIconOutline color="black" size={24} />
             <TextInput
               style={styles.input}
               placeholder="E-mail"
-              placeholderTextColor={'white'}
+              placeholderTextColor={'black'}
               onChangeText={setUsername}
               value={username}
             />
           </View>
           <View style={styles.divider} />
           <View style={styles.rowcontainer}>
-            <LockClosedIconOutline color="white" size={24} />
+            <LockClosedIconOutline color="black" size={24} />
             <TextInput
               style={[styles.input, {flex: 1}]}
               placeholder={t('password')}
-              placeholderTextColor={'white'}
+              placeholderTextColor={'black'}
               secureTextEntry={true}
               onChangeText={setPassword}
               value={password}

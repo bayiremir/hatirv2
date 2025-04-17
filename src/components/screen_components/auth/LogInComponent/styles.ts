@@ -1,5 +1,6 @@
 import {StyleSheet} from 'react-native';
 import {Fonts} from '../../../../interfaces/fonts.enum';
+import {COLORS} from '../../../../constants/COLORS';
 
 export const styles = StyleSheet.create({
   container: {
@@ -17,18 +18,18 @@ export const styles = StyleSheet.create({
     fontSize: 16,
     fontFamily: Fonts.Bold,
     marginVertical: 10,
-    color: 'white',
+    color: 'black',
     textAlign: 'center',
   },
   description: {
     fontSize: 14,
     fontFamily: Fonts.Regular,
     textAlign: 'center',
-    marginVertical: 20,
-    color: 'white',
+    color: 'black',
+    marginBottom: 20,
   },
   button: {
-    backgroundColor: '#4CAF50',
+    backgroundColor: COLORS.tertiary,
     padding: 10,
     borderRadius: 5,
     alignItems: 'center',

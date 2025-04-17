@@ -6,7 +6,7 @@ export const styles = StyleSheet.create({
   header: {
     fontSize: 20,
     fontFamily: Fonts.Bold,
-    color: 'white',
+    color: 'black',
     marginVertical: 10,
     marginHorizontal: 10,
   },

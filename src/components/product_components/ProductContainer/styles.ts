@@ -1,4 +1,4 @@
-import {StyleSheet} from 'react-native';
+import {Dimensions, StyleSheet} from 'react-native';
 import {Fonts} from '../../../interfaces/fonts.enum';
 
 export const styles = StyleSheet.create({
@@ -7,31 +7,44 @@ export const styles = StyleSheet.create({
   },
   header: {
     fontSize: 16,
-    color: 'white',
+    color: 'black',
     fontFamily: Fonts.Bold,
     marginVertical: 10,
     paddingHorizontal: 10,
   },
   listContainer: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
     flexWrap: 'wrap',
     paddingHorizontal: 10,
   },
+  heartIconContainer: {
+    position: 'absolute',
+    top: 10,
+    right: 10,
+    backgroundColor: 'white',
+    borderRadius: 50,
+    padding: 5,
+  },
   productContainer: {
-    width: '48%',
+    width: Dimensions.get('window').width / 2 - 60,
+    marginRight: 10,
     marginBottom: 10,
   },
   productImage: {
-    width: '100%',
-    height: 100,
-    borderRadius: 10,
+    height: 200,
+    borderRadius: 30,
+    resizeMode: 'cover',
   },
   productName: {
     marginTop: 5,
     fontSize: 14,
-    color: 'white',
-    fontFamily: Fonts.Regular,
-    textAlign: 'center',
+    color: 'black',
+    fontFamily: Fonts.Bold,
+  },
+  rating: {
+    fontSize: 14,
+    color: 'black',
+    marginLeft: 5,
+    fontFamily: Fonts.Light,
   },
 });

@@ -20,8 +20,8 @@ const TabStack = () => {
     <Tab.Navigator
       screenOptions={{
         headerShown: false,
-        tabBarActiveTintColor: COLORS.white,
-        tabBarInactiveTintColor: COLORS.white,
+        tabBarActiveTintColor: COLORS.dark,
+        tabBarInactiveTintColor: COLORS.dark,
         tabBarLabelStyle: {
           fontSize: 12,
           fontFamily: Fonts.Bold,
@@ -29,7 +29,7 @@ const TabStack = () => {
         },
         tabBarLabelPosition: 'below-icon',
         tabBarStyle: {
-          backgroundColor: COLORS.accent,
+          backgroundColor: '##f0f0f0',
           borderTopWidth: 0,
         },
       }}>

@@ -5,9 +5,9 @@ import HomeIconOutline from 'react-native-heroicons/outline/HomeIcon';
 
 const HomeScreenIcon = ({focused}: {focused: boolean}) => {
   return focused ? (
-    <HomeIconSolid size={25} color={COLORS.white} stroke={COLORS.dark} />
+    <HomeIconSolid size={25} color={COLORS.dark} stroke={COLORS.dark} />
   ) : (
-    <HomeIconOutline size={25} color={'white'} />
+    <HomeIconOutline size={25} color={COLORS.dark} />
   );
 };
 

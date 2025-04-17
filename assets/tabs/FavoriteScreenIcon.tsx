@@ -5,9 +5,9 @@ import {HeartIcon as HeartIconSolid} from 'react-native-heroicons/solid';
 
 const FavoriteScreenIcon = ({focused}: {focused: boolean}) => {
   return focused ? (
-    <HeartIconSolid size={25} color={COLORS.white} stroke={COLORS.dark} />
+    <HeartIconSolid size={25} color={COLORS.dark} stroke={COLORS.dark} />
   ) : (
-    <HeartIconOutline size={25} color={'white'} />
+    <HeartIconOutline size={25} color={COLORS.dark} />
   );
 };
 

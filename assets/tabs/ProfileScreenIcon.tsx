@@ -5,9 +5,9 @@ import UserIconOutline from 'react-native-heroicons/outline/UserIcon';
 
 const ProfileScreenIcon = ({focused}: {focused: boolean}) => {
   return focused ? (
-    <UserIconSolid size={25} color={COLORS.white} stroke={COLORS.dark} />
+    <UserIconSolid size={25} color={COLORS.dark} stroke={COLORS.dark} />
   ) : (
-    <UserIconOutline size={25} color="white" />
+    <UserIconOutline size={25} color={COLORS.dark} />
   );
 };
 

@@ -13,6 +13,8 @@ const initialState: userSliceInitialStateType = {
   cart: storage.getString('cart')
     ? JSON.parse(storage.getString('cart') || '[]')
     : [],
+  favoriteRestaurants: [],
+  language: storage.getString('language') || 'tr',
 };
 
 const userSlice = createSlice({
@@ -53,6 +55,10 @@ const userSlice = createSlice({
     setCart: (state, action) => {
       state.cart = action.payload;
       storage.set('cart', JSON.stringify(action.payload));
+    },
+    setLanguage: (state, action) => {
+      state.language = action.payload;
+      storage.set('language', action.payload);
     },
   },
 });

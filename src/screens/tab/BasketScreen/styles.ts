@@ -5,7 +5,7 @@ import {Fonts} from '../../../interfaces/fonts.enum';
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: COLORS.dark,
+    backgroundColor: COLORS.background,
   },
   button: {
     backgroundColor: COLORS.tertiary,
@@ -15,7 +15,7 @@ export const styles = StyleSheet.create({
     marginTop: 20,
   },
   buttonText: {
-    color: COLORS.white,
+    color: 'black',
     fontSize: 16,
     fontFamily: Fonts.Bold,
   },

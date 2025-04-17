@@ -1,4 +1,5 @@
 import {StyleSheet} from 'react-native';
+import {COLORS} from '../../../constants/COLORS';
 
 export const styles = StyleSheet.create({
   background: {
@@ -11,7 +12,7 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     padding: 8,
     borderRadius: 20,
-    backgroundColor: '#F0F0F0',
+    backgroundColor: COLORS.background,
   },
   searchBar: {
     flex: 1,

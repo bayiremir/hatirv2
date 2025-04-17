@@ -66,40 +66,40 @@ const RegisterScreen = () => {
   };
   return (
     <KeyboardAvoidingView style={styles.container}>
-      <GoBackTabBar color="white" center={true} />
+      <GoBackTabBar color="black" center={true} />
       <ScrollView
         style={styles.secondcontainer}
         contentContainerStyle={styles.contentContainer}>
         <View style={styles.inputContainer}>
           <Text style={styles.text}>Kayıt Ol</Text>
           <View style={styles.rowcontainer}>
-            <UserIconOutline color="white" size={24} />
+            <UserIconOutline color="black" size={24} />
             <TextInput
               style={styles.input}
               placeholder="Ad Soyad"
-              placeholderTextColor={'white'}
+              placeholderTextColor={'black'}
               onChangeText={setFullName}
               value={fullName}
             />
           </View>
           <View style={styles.divider} />
           <View style={styles.rowcontainer}>
-            <AtSymbolIconOutline color="white" size={24} />
+            <AtSymbolIconOutline color="black" size={24} />
             <TextInput
               style={styles.input}
               placeholder="E-mail"
-              placeholderTextColor={'white'}
+              placeholderTextColor={'black'}
               onChangeText={setEmail}
               value={email}
             />
           </View>
           <View style={styles.divider} />
           <View style={styles.rowcontainer}>
-            <PhoneIconOutline color="white" size={24} />
+            <PhoneIconOutline color="black" size={24} />
             <TextInput
               style={styles.input}
               placeholder="Telefon Numarası"
-              placeholderTextColor={'white'}
+              placeholderTextColor={'black'}
               onChangeText={setPhoneNumber}
               value={phoneNumber}
               keyboardType="phone-pad"
@@ -107,11 +107,11 @@ const RegisterScreen = () => {
           </View>
           <View style={styles.divider} />
           <View style={styles.rowcontainer}>
-            <LockClosedIconOutline color="white" size={24} />
+            <LockClosedIconOutline color="black" size={24} />
             <TextInput
               style={styles.input}
               placeholder="Şifre"
-              placeholderTextColor={'white'}
+              placeholderTextColor={'black'}
               secureTextEntry={true}
               onChangeText={setPassword}
               value={password}

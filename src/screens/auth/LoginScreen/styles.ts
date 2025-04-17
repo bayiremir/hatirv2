@@ -5,7 +5,7 @@ import {Fonts} from '../../../interfaces/fonts.enum';
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: COLORS.dark,
+    backgroundColor: COLORS.background,
   },
   secondcontainer: {
     flex: 1,
@@ -15,13 +15,13 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
   },
   text: {
-    color: '#fff',
+    color: COLORS.black,
     fontSize: 24,
     fontFamily: Fonts.Bold,
     marginBottom: 20,
   },
   textsmall: {
-    color: '#fff',
+    color: COLORS.white,
     fontSize: 14,
     fontFamily: Fonts.Regular,
     marginTop: 20,
@@ -30,7 +30,7 @@ export const styles = StyleSheet.create({
     textAlign: 'center',
   },
   bigTitle: {
-    color: '#EEEEEE',
+    color: COLORS.black,
     fontSize: 50,
     fontFamily: Fonts.Bold,
     bottom: 50,
@@ -42,7 +42,7 @@ export const styles = StyleSheet.create({
   input: {
     flex: 1,
     padding: 20,
-    color: '#fff',
+    color: COLORS.black,
     fontFamily: Fonts.Regular,
   },
   button: {
@@ -57,7 +57,7 @@ export const styles = StyleSheet.create({
   buttonText: {
     fontFamily: Fonts.Bold,
     fontSize: 16,
-    color: 'white',
+    color: COLORS.white,
   },
   buttonlogo: {
     width: 100,
@@ -89,12 +89,12 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
   },
   registerText: {
-    color: 'aqua',
+    color: COLORS.tertiary,
     fontFamily: Fonts.Bold,
     fontSize: 14,
   },
   registerTextSmall: {
-    color: '#EEEEEE',
+    color: COLORS.black,
     marginRight: 5,
     fontFamily: Fonts.Regular,
     fontSize: 14,
@@ -104,7 +104,7 @@ export const styles = StyleSheet.create({
     marginTop: 50,
   },
   forgetPasswordText: {
-    color: 'aqua',
+    color: COLORS.tertiary,
     fontFamily: Fonts.Bold,
     fontSize: 14,
   },

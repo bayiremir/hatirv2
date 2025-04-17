@@ -2,6 +2,7 @@ import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react';
 import {getAuth} from '@react-native-firebase/auth';
 import {userSliceType} from '../../interfaces/user.interface';
 import {Resturant} from '../../interfaces/resturant.enum';
+import {Brand} from '../../interfaces/brand.interface';
 
 const baseQuery = fetchBaseQuery({
   baseUrl: 'http://localhost:5001/api/',
@@ -133,6 +134,9 @@ export const mobileApi = createApi({
     getGiftsByUser: builder.query<any[], string>({
       query: userId => `gifts/user/${userId}`,
     }),
+    getResturantByCode: builder.query<Brand, string>({
+      query: code => `resturant/${code}`,
+    }),
   }),
 });
 
@@ -151,4 +155,5 @@ export const {
   useBlockUserMutation,
   useSendGiftMutation,
   useGetGiftsByUserQuery,
+  useGetResturantByCodeQuery,
 } = mobileApi;

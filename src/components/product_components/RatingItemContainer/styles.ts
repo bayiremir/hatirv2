@@ -33,7 +33,6 @@ export const styles = StyleSheet.create({
     fontFamily: Fonts.Light,
   },
   topic_rating_topic_container: {
-    flex: 1,
     alignItems: 'center',
     backgroundColor: 'rgba(52, 78, 65, 0.3)',
     borderRadius: 5,

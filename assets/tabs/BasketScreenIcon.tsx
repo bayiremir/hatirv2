@@ -5,9 +5,9 @@ import {ShoppingBagIcon as ShoppingBagIconSolid} from 'react-native-heroicons/so
 
 const BasketScreenIcon = ({focused}: {focused: boolean}) => {
   return focused ? (
-    <ShoppingBagIconSolid size={25} color={COLORS.white} stroke={COLORS.dark} />
+    <ShoppingBagIconSolid size={25} color={COLORS.dark} stroke={COLORS.dark} />
   ) : (
-    <ShoppingBagIconOutline size={25} color={'white'} />
+    <ShoppingBagIconOutline size={25} color={COLORS.dark} />
   );
 };
 
