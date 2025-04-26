@@ -60,6 +60,19 @@ const userSlice = createSlice({
       state.language = action.payload;
       storage.set('language', action.payload);
     },
+    setFavoriteRestaurants: (state, action) => {
+      const item = action.payload;
+      const isFavorite = state.favoriteRestaurants.some(
+        (restaurant: any) => restaurant.id === item.id,
+      );
+      if (isFavorite) {
+        state.favoriteRestaurants = state.favoriteRestaurants.filter(
+          (restaurant: any) => restaurant.id !== item.id,
+        );
+      } else {
+        state.favoriteRestaurants.push(item);
+      }
+    },
   },
 });
 
@@ -72,5 +85,7 @@ export const {
   setNotificationEnabled,
   setLogout,
   setCart,
+  setLanguage,
+  setFavoriteRestaurants,
 } = userSlice.actions;
 export default userSlice.reducer;

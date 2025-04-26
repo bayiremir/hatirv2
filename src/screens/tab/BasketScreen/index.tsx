@@ -8,6 +8,7 @@ import {styles} from './styles';
 import Lottie from '../../../components/other_components/Lottie';
 import {setLogout} from '../../../redux/slices/userSlice';
 import {useTranslation} from 'react-i18next';
+import TabBar from '../../../components/tab_components/TabBar';
 
 const BasketScreen = () => {
   const {data: profile, isLoading: profileLoading} = useGetProfileQuery();
@@ -19,6 +20,7 @@ const BasketScreen = () => {
   );
   return (
     <View style={styles.container}>
+      <TabBar title={t('basket')} />
       {!isLoggedIn ? (
         <LogInComponent
           header={t('headerbasket')}

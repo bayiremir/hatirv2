@@ -11,8 +11,8 @@ import {
 } from 'react-native-heroicons/solid';
 import {Fonts} from '../../../interfaces/fonts.enum';
 import {useDispatch, useSelector} from 'react-redux';
-import {setFavoriteRestaurants} from '../../../redux/slices/userSlice';
 import {userSliceInitialStateType} from '../../../interfaces/user.interface';
+import {setFavoriteRestaurants} from '../../../redux/slices/userSlice';
 
 const ProductContainer = ({data}: {data: OrganicListing}) => {
   const navigation = useNavigation<RootNavigationType>();

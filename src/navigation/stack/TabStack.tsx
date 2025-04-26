@@ -11,6 +11,7 @@ import FavoriteScreenIcon from '../../../assets/tabs/FavoriteScreenIcon';
 import BasketScreenIcon from '../../../assets/tabs/BasketScreenIcon';
 import ProfileStack from './ProfileStack';
 import BasketStack from './BasketStack';
+import {getTabBarDisplay} from '../../utils/navigationHelpers'; // ✅ import eklendi
 
 const Tab = createBottomTabNavigator();
 
@@ -29,25 +30,35 @@ const TabStack = () => {
         },
         tabBarLabelPosition: 'below-icon',
         tabBarStyle: {
-          backgroundColor: '##f0f0f0',
+          backgroundColor: '#f0f0f0',
           borderTopWidth: 0,
         },
       }}>
       <Tab.Screen
-        component={HomeStack}
         name="HomeStack"
-        options={{
+        component={HomeStack}
+        options={({route}) => ({
           tabBarIcon: HomeScreenIcon,
           tabBarLabel: t('home'),
-        }}
+          tabBarStyle: {
+            backgroundColor: '#f0f0f0',
+            borderTopWidth: 0,
+            display: getTabBarDisplay(route),
+          },
+        })}
       />
       <Tab.Screen
         name="BasketStack"
         component={BasketStack}
-        options={{
+        options={({route}) => ({
           tabBarIcon: BasketScreenIcon,
           tabBarLabel: t('basket'),
-        }}
+          tabBarStyle: {
+            backgroundColor: '#f0f0f0',
+            borderTopWidth: 0,
+            display: getTabBarDisplay(route),
+          },
+        })}
       />
       <Tab.Screen
         name="FavoriteScreen"
@@ -60,10 +71,15 @@ const TabStack = () => {
       <Tab.Screen
         name="ProfileStack"
         component={ProfileStack}
-        options={{
+        options={({route}) => ({
           tabBarIcon: ProfileScreenIcon,
           tabBarLabel: t('profile'),
-        }}
+          tabBarStyle: {
+            backgroundColor: '#f0f0f0',
+            borderTopWidth: 0,
+            display: getTabBarDisplay(route),
+          },
+        })}
       />
     </Tab.Navigator>
   );

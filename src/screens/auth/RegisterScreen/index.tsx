@@ -66,7 +66,7 @@ const RegisterScreen = () => {
   };
   return (
     <KeyboardAvoidingView style={styles.container}>
-      <GoBackTabBar color="black" center={true} />
+      <GoBackTabBar color="white" title="" />
       <ScrollView
         style={styles.secondcontainer}
         contentContainerStyle={styles.contentContainer}>

@@ -49,6 +49,8 @@ const tr = {
   help: 'Yardım',
   logout: 'Çıkış Yap',
   language: 'Dil & Language',
+  addaddress: 'Adres Ekle',
+  continue: 'Devam',
 };
 
 export default tr;

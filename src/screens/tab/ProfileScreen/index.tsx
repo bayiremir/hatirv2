@@ -3,7 +3,7 @@ import React from 'react';
 import {styles} from './styles';
 import {useGetProfileQuery} from '../../../redux/services/mobileApi';
 import Lottie from '../../../components/other_components/Lottie';
-import {useSelector} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {userSliceInitialStateType} from '../../../interfaces/user.interface';
 import LogInComponent from '../../../components/screen_components/auth/LogInComponent';
 import {useTranslation} from 'react-i18next';
@@ -11,10 +11,12 @@ import TabBar from '../../../components/tab_components/TabBar';
 import ProfileFieldComponents from '../../../components/screen_components/profile/ProfileFieldComponents';
 import {useNavigation} from '@react-navigation/native';
 import {RootNavigationType} from '../../../interfaces/navigation.interface';
+import {setLogout} from '../../../redux/slices/userSlice';
 
 const ProfileScreen = () => {
   const {data: profile, isLoading: profileLoading} = useGetProfileQuery();
   const {t} = useTranslation();
+  const dispatch = useDispatch<any>();
   const navigation = useNavigation<RootNavigationType>();
   const user = useSelector(
     (state: {userSlice: userSliceInitialStateType}) => state.userSlice,
@@ -94,6 +96,9 @@ const ProfileScreen = () => {
             <ProfileFieldComponents
               text={t('logout')}
               icon={'https://cdn-icons-png.flaticon.com/512/5692/5692094.png'}
+              onPress={() => {
+                dispatch(setLogout());
+              }}
             />
           </View>
           <Text style={styles.header}>{t('language')}</Text>

@@ -3,13 +3,15 @@ import React from 'react';
 import GoBackTabBar from '../../../components/tab_components/GoBackTabBar';
 import {useTranslation} from 'react-i18next';
 import {styles} from './styles';
-import {useRoute} from '@react-navigation/native';
+import {useNavigation, useRoute} from '@react-navigation/native';
 import {BaseUserType} from '../../../interfaces/user.interface';
+import {RootNavigationType} from '../../../interfaces/navigation.interface';
 
 const AddressScreen = () => {
   const {t} = useTranslation();
   const route = useRoute();
   const {profile} = route.params as {profile: BaseUserType};
+  const navigation = useNavigation<RootNavigationType>();
   return (
     <View style={styles.container}>
       <GoBackTabBar color="white" title={t('address')} />
@@ -22,13 +24,17 @@ const AddressScreen = () => {
           <Text style={styles.noAddressText}>{t('noaddress')}</Text>
         </View>
       )}
-      <TouchableOpacity
-        style={styles.addButton}
-        onPress={() => {
-          // Add functionality to add address
-        }}>
-        <Text style={styles.addButtonText}>{t('addaddress')}</Text>
-      </TouchableOpacity>
+      <View style={styles.addAddressContainer}>
+        <TouchableOpacity
+          style={styles.addButton}
+          onPress={() => {
+            navigation.navigate('AddAddressScreen', {
+              profile: profile,
+            });
+          }}>
+          <Text style={styles.addButtonText}>{t('addaddress')}</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };

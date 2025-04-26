@@ -1,43 +1,36 @@
-import {SafeAreaView, Text, TouchableOpacity, View} from 'react-native';
+import {FlatList, Image, Text, View} from 'react-native';
 import React from 'react';
-import LogInComponent from '../../../components/screen_components/auth/LogInComponent';
-import {useDispatch, useSelector} from 'react-redux';
-import {useGetProfileQuery} from '../../../redux/services/mobileApi';
+import {useSelector} from 'react-redux';
 import {userSliceInitialStateType} from '../../../interfaces/user.interface';
 import {styles} from './styles';
-import Lottie from '../../../components/other_components/Lottie';
-import {setLogout} from '../../../redux/slices/userSlice';
 import {useTranslation} from 'react-i18next';
+import TabBar from '../../../components/tab_components/TabBar';
 
 const FavoriteScreen = () => {
-  const {data: profile, isLoading: profileLoading} = useGetProfileQuery();
   const {t} = useTranslation();
-  const dispatch = useDispatch<any>();
-  const isLoggedIn = useSelector(
+  const favoriteRestaurants = useSelector(
     (state: {userSlice: userSliceInitialStateType}) =>
-      state.userSlice.authLogin,
+      state.userSlice.favoriteRestaurants || [],
   );
+  console.log('favoriteRestaurants', favoriteRestaurants[0].budget);
   return (
     <View style={styles.container}>
-      {!isLoggedIn ? (
-        <LogInComponent
-          header={t('headerfavorite')}
-          description={t('descriptionfavorite')}
-        />
-      ) : profileLoading ? (
-        <Lottie />
-      ) : (
-        <SafeAreaView>
-          <Text>{profile?.name}</Text>
-          <TouchableOpacity
-            style={styles.button}
-            onPress={() => {
-              dispatch(setLogout());
-            }}>
-            <Text style={styles.buttonText}>Logout</Text>
-          </TouchableOpacity>
-        </SafeAreaView>
-      )}
+      <TabBar title={t('favorite')} />
+      <FlatList
+        data={favoriteRestaurants}
+        keyExtractor={item => item.id.toString()}
+        renderItem={({item}) => (
+          <View style={styles.itemContainer}>
+            <Image
+              source={{uri: item.hero_listing_image}}
+              style={styles.itemImage}
+            />
+            <Text style={styles.itemText}>{item.name}</Text>
+            <Text style={styles.itemText}>{item.budget}</Text>
+          </View>
+        )}
+        showsVerticalScrollIndicator={false}
+      />
     </View>
   );
 };

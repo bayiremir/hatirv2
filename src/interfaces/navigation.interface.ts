@@ -19,6 +19,7 @@ export type RootStackParamList = {
   BasketScreen: {};
   FavoriteScreen: {};
   AddressScreen: {};
+  AddAddressScreen: {};
 };
 
 export type RootNavigationType = NativeStackNavigationProp<RootStackParamList>;

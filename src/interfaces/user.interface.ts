@@ -1,5 +1,7 @@
 // userSlice.interface.ts
 
+import {Item} from './resturant.enum';
+
 // Kullanıcı için login geçmişi interface'i
 export interface LoginHistoryType {
   ip: string;
@@ -51,6 +53,6 @@ export interface userSliceInitialStateType {
   onboarding: boolean;
   notificationEnabled: boolean;
   cart: any[];
-  favoriteRestaurants: any[];
+  favoriteRestaurants: Item[];
   language: string;
 }

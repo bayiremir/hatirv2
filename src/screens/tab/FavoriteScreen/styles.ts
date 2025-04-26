@@ -7,16 +7,16 @@ export const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: COLORS.background,
   },
-  button: {
-    backgroundColor: COLORS.tertiary,
-    padding: 10,
-    borderRadius: 5,
+  itemContainer: {
+    flexDirection: 'row',
     alignItems: 'center',
-    marginTop: 20,
+    padding: 10,
+    borderBottomWidth: 1,
   },
-  buttonText: {
-    color: 'black',
-    fontSize: 16,
-    fontFamily: Fonts.Bold,
+  itemImage: {
+    width: 50,
+    height: 50,
+    borderRadius: 25,
+    marginRight: 10,
   },
 });
